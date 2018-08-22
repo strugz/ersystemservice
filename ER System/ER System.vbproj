@@ -1,0 +1,470 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{62C43D9C-C48C-4B1B-A221-4DC7AF9B5885}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>ER_System.My.MyApplication</StartupObject>
+    <RootNamespace>ER_System</RootNamespace>
+    <AssemblyName>ER System</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>ER System.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>ER System.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DocumentationFile>ER System.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DocumentationFile>ER System.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationIcon>HP-Explorer-Blue-Dock-512.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Design">
+      <HintPath>C:\Windows\SysWOW64\CrystalDecisions.CrystalReports.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="CrystalDecisions.CrystalReports" />
+    <Import Include="CrystalDecisions.CrystalReports.Engine" />
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Clipping.vb" />
+    <Compile Include="clsEncryption.vb" />
+    <Compile Include="frmExpenseSummary.Designer.vb">
+      <DependentUpon>frmExpenseSummary.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmExpenseSummary.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdditionalInput.Designer.vb">
+      <DependentUpon>frmAdditionalInput.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdditionalInput.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmApprove.Designer.vb">
+      <DependentUpon>frmApprove.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmApprove.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCancelNote.Designer.vb">
+      <DependentUpon>frmCancelNote.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCancelNote.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChangePassword.Designer.vb">
+      <DependentUpon>frmChangePassword.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmChangePassword.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConnection.designer.vb">
+      <DependentUpon>frmConnection.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmConnection.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDeptSignature.Designer.vb">
+      <DependentUpon>frmDeptSignature.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDeptSignature.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEmailSetup.Designer.vb">
+      <DependentUpon>frmEmailSetup.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEmailSetup.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEReport.Designer.vb">
+      <DependentUpon>frmEReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmERType.Designer.vb">
+      <DependentUpon>frmERType.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmERType.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmExpenseDetails.Designer.vb">
+      <DependentUpon>frmExpenseDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmExpenseDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHelp.Designer.vb">
+      <DependentUpon>frmHelp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmHelp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHistory.Designer.vb">
+      <DependentUpon>frmHistory.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmHistory.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLoading.Designer.vb">
+      <DependentUpon>frmLoading.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLoading.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.vb">
+      <DependentUpon>frmLogin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOfflineReport.Designer.vb">
+      <DependentUpon>frmOfflineReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmOfflineReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPreviousER.Designer.vb">
+      <DependentUpon>frmPreviousER.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPreviousER.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPreviousERExpense.Designer.vb">
+      <DependentUpon>frmPreviousERExpense.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPreviousERExpense.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReturnedER.Designer.vb">
+      <DependentUpon>frmReturnedER.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmReturnedER.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRpt.Designer.vb">
+      <DependentUpon>frmRpt.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRpt.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.vb">
+      <DependentUpon>frmMain.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmrptExpenseSummary.Designer.vb">
+      <DependentUpon>frmrptExpenseSummary.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmrptExpenseSummary.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSelectDept.Designer.vb">
+      <DependentUpon>frmSelectDept.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSelectDept.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSignature.Designer.vb">
+      <DependentUpon>frmSignature.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSignature.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserRegistration.Designer.vb">
+      <DependentUpon>frmUserRegistration.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserRegistration.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mConn.vb" />
+    <Compile Include="modLoadingData.vb" />
+    <Compile Include="modMaintenance.vb" />
+    <Compile Include="modReport.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmExpenseSummary.resx">
+      <DependentUpon>frmExpenseSummary.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdditionalInput.resx">
+      <DependentUpon>frmAdditionalInput.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmApprove.resx">
+      <DependentUpon>frmApprove.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCancelNote.resx">
+      <DependentUpon>frmCancelNote.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChangePassword.resx">
+      <DependentUpon>frmChangePassword.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConnection.resx">
+      <DependentUpon>frmConnection.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDeptSignature.resx">
+      <DependentUpon>frmDeptSignature.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEmailSetup.resx">
+      <DependentUpon>frmEmailSetup.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEReport.resx">
+      <DependentUpon>frmEReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmERType.resx">
+      <DependentUpon>frmERType.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmExpenseDetails.resx">
+      <DependentUpon>frmExpenseDetails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHelp.resx">
+      <DependentUpon>frmHelp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHistory.resx">
+      <DependentUpon>frmHistory.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLoading.resx">
+      <DependentUpon>frmLoading.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOfflineReport.resx">
+      <DependentUpon>frmOfflineReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPreviousER.resx">
+      <DependentUpon>frmPreviousER.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPreviousERExpense.resx">
+      <DependentUpon>frmPreviousERExpense.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReturnedER.resx">
+      <DependentUpon>frmReturnedER.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRpt.resx">
+      <DependentUpon>frmRpt.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmrptExpenseSummary.resx">
+      <DependentUpon>frmrptExpenseSummary.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSelectDept.resx">
+      <DependentUpon>frmSelectDept.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSignature.resx">
+      <DependentUpon>frmSignature.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserRegistration.resx">
+      <DependentUpon>frmUserRegistration.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="My Project\app.manifest" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\expense.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\expense1.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Print.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Help\AccountSettings-ChangePassword.png" />
+    <None Include="bin\Debug\Help\AccountSettings-Signatory.png" />
+    <None Include="bin\Debug\Help\Add ER-Reimbursment Title.png" />
+    <None Include="bin\Debug\Help\Add Signatory.png" />
+    <None Include="bin\Debug\Help\Adding Expense.png" />
+    <None Include="bin\Debug\Help\AddReport-Expense.png" />
+    <None Include="bin\Debug\Help\Approve report.png" />
+    <None Include="bin\Debug\Help\Approved the FileER.png" />
+    <None Include="bin\Debug\Help\ChangeEmailSettings.png" />
+    <None Include="bin\Debug\Help\ChangePassword.png" />
+    <None Include="bin\Debug\Help\ER-Reimbursment added.png" />
+    <None Include="bin\Debug\Help\File the report.png" />
+    <None Include="bin\Debug\Help\FiledReportDisplay.png" />
+    <None Include="bin\Debug\Help\PendingER.png" />
+    <None Include="bin\Debug\Help\PendingFiledER.png" />
+    <None Include="bin\Debug\Help\PreviousER.png" />
+    <None Include="bin\Debug\Help\SearchAllER-Reimbursment.png" />
+    <None Include="bin\Debug\Help\Sending your ER.png" />
+    <None Include="bin\Debug\Help\updateExpenseData.png" />
+    <Content Include="HP-Explorer-Blue-Dock-512.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
