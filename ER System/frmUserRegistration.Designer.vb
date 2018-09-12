@@ -50,6 +50,8 @@ Partial Class frmUserRegistration
         Me.btnUpdate = New System.Windows.Forms.Button()
         Me.dgvUserAccount = New System.Windows.Forms.DataGridView()
         Me.fd = New System.Windows.Forms.OpenFileDialog()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.picSignature, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -88,6 +90,8 @@ Partial Class frmUserRegistration
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.TextBox1)
+        Me.TabPage1.Controls.Add(Me.Label6)
         Me.TabPage1.Controls.Add(Me.ComboBox1)
         Me.TabPage1.Controls.Add(Me.Label5)
         Me.TabPage1.Controls.Add(Me.btnCancel)
@@ -140,7 +144,7 @@ Partial Class frmUserRegistration
         '
         'btnCancel
         '
-        Me.btnCancel.Location = New System.Drawing.Point(123, 454)
+        Me.btnCancel.Location = New System.Drawing.Point(123, 496)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(75, 37)
         Me.btnCancel.TabIndex = 20
@@ -291,7 +295,7 @@ Partial Class frmUserRegistration
         '
         'btnSave
         '
-        Me.btnSave.Location = New System.Drawing.Point(204, 454)
+        Me.btnSave.Location = New System.Drawing.Point(204, 496)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(75, 37)
         Me.btnSave.TabIndex = 12
@@ -300,7 +304,7 @@ Partial Class frmUserRegistration
         '
         'btnUpdate
         '
-        Me.btnUpdate.Location = New System.Drawing.Point(204, 454)
+        Me.btnUpdate.Location = New System.Drawing.Point(204, 496)
         Me.btnUpdate.Name = "btnUpdate"
         Me.btnUpdate.Size = New System.Drawing.Size(75, 37)
         Me.btnUpdate.TabIndex = 21
@@ -331,6 +335,22 @@ Partial Class frmUserRegistration
         'fd
         '
         Me.fd.FileName = "OpenFileDialog1"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(14, 445)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(41, 15)
+        Me.Label6.TabIndex = 25
+        Me.Label6.Text = "Label6"
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(105, 442)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(174, 23)
+        Me.TextBox1.TabIndex = 26
         '
         'frmUserRegistration
         '
@@ -379,4 +399,6 @@ Partial Class frmUserRegistration
     Friend WithEvents btnUpdate As System.Windows.Forms.Button
     Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Label6 As Label
 End Class

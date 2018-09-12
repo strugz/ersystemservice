@@ -56,6 +56,7 @@ Module modLoadingData
     Public ExpenseSummaryDateFrom As String
     Public ExpenseSummaryDateTo As String
     Public ReportPrintStatus As String
+    Public WorkWith As String
     Public Sub LoadDuplicateUser(ByVal username As String)
         Try
             With sqlcmdLoadDupUser

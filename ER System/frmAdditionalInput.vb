@@ -24,6 +24,7 @@
         frmEReport.TopMost = False
         If My.Computer.Registry.GetValue("HKEY_CURRENT_USER\Software\ER System\Settings", "Additional", "") = "1" Then
             CheckBox1.Checked = False
+            txtWorkWith.Text = modLoadingData.WorkWith
         End If
     End Sub
 End Class

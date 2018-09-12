@@ -581,4 +581,8 @@
     Private Sub DgvReportDetails_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgvReportDetails.CellContentClick
 
     End Sub
+
+    Private Sub DgvReportDetails_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgvReportDetails.CellDoubleClick
+
+    End Sub
 End Class

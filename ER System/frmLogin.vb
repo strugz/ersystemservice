@@ -33,14 +33,14 @@ Public Class frmLogin
         NewVersion = GetFileVersionInfo(Application.StartupPath + "\Executable\ER.exe").ToString()
         If CurrentVersion = NewVersion Then
         Else
-            If (Not System.IO.File.Exists(Application.StartupPath + "\Executable")) Then
-                Threading.Thread.Sleep(300)
-                System.IO.File.Delete(Application.StartupPath + "\ER.exe")
-                System.IO.File.Copy(Application.StartupPath + "\Executable\ER.exe", Application.StartupPath + "\ER.exe")
+            If (Not IO.File.Exists(Application.StartupPath + "\Executable")) Then
+                Thread.Sleep(300)
+                IO.File.Delete(Application.StartupPath + "\ER.exe")
+                IO.File.Copy(Application.StartupPath + "\Executable\ER.exe", Application.StartupPath + "\ER.exe")
 
                 My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\ER System\Connection", "ERUpdater", "1")
-                If (Not System.IO.Directory.Exists(Application.StartupPath + "\ERPDF")) Then
-                    System.IO.Directory.CreateDirectory(Application.StartupPath + "\ERPDF")
+                If (Not IO.Directory.Exists(Application.StartupPath + "\ERPDF")) Then
+                    IO.Directory.CreateDirectory(Application.StartupPath + "\ERPDF")
                 End If
                 MsgBox("Application Updated. The Application will be close . . . .")
                 Application.Exit()
@@ -90,7 +90,6 @@ Public Class frmLogin
             frmMain.tsslUserDept.Text = modLoadingData.LoginDepartment
             frmMain.tsmiPrev.Visible = False
             frmMain.UserAccountToolStripMenuItem.Visible = False
-            'frmMain.MenuExpenseDetails.Visible = False
             frmMain.fmsExpenseSummary.Visible = False
         ElseIf modLoadingData.LoginDepartment = "IMS" And modLoadingData.LoginUsername = UCase(txtUsername.Text) And modLoadingData.LoginPassword = txtPassword.Text And modLoadingData.LoginUserLevel = "Admin" Then
             frmMain.Show()

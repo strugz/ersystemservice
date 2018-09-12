@@ -85,17 +85,22 @@ Public Class frmRpt
         ExportER.Export()
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+
         If modLoadingData.ReportIDExport = Nothing Then
             MsgBox("Select Report To Send")
         Else
-            If LoadReportSentStatus(modLoadingData.ReportIDExport) = "1" Then
-                cryptRptER.PrintReport()
-            Else
-                Me.reportID = modLoadingData.ReportIDExport
-                frmERType.Show()
-                Me.TopMost = False
-                frmERType.TopMost = True
-            End If
+            Try
+                If LoadReportSentStatus(modLoadingData.ReportIDExport) = "1" Then
+                    cryptRptER.PrintReport()
+                Else
+                    Me.reportID = modLoadingData.ReportIDExport
+                    frmERType.Show()
+                    Me.TopMost = False
+                    frmERType.TopMost = True
+                End If
+            Catch ex As Exception
+                MessageBox.Show("Sending Error Please Contact ID Administrator.")
+            End Try
         End If
     End Sub
     Function LoadReportSentStatus(ByVal reportidexport As String) As String
@@ -107,7 +112,7 @@ Public Class frmRpt
             .CommandType = CommandType.Text
             dtloadReportSentStatus.Load(.ExecuteReader)
             If dtloadReportSentStatus.Rows.Count <> 0 Then
-                reportidexport = dtloadReportSentStatus.Rows(0).Item("ReportSentStatus")
+                reportidexport = IIf(IsDBNull(dtloadReportSentStatus.Rows(0).Item("ReportSentStatus")) = True, "", dtloadReportSentStatus.Rows(0).Item("ReportSentStatus"))
             End If
         End With
         Return reportidexport

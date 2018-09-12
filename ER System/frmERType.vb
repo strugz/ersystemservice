@@ -1,5 +1,4 @@
-﻿'Imports EASendMail
-Imports System.Security.Cryptography
+﻿Imports System.Security.Cryptography
 Imports Microsoft.Win32
 Imports System.IO
 Imports System.Net
@@ -7,7 +6,7 @@ Imports System.Net.Mail
 Imports System.Net.Mime
 Imports System.Threading
 Imports System.ComponentModel
-'Imports System.Threading
+
 Public Class frmERType
     Dim subject As String
     Dim dtp As DateTime = Date.Now

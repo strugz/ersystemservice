@@ -26,7 +26,7 @@
             End If
         Next
         If iSelectedRow <> -1 Then
-            Dim sTmp(16) As String
+            Dim sTmp(18) As String
             For iTmp As Integer = 0 To dgvExpense.Columns.Count - 1
                 sTmp(iTmp) = dgvExpense.Rows(iSelectedRow).Cells(iTmp).Value.ToString
             Next
@@ -252,6 +252,7 @@
             dgvExpense.Columns("ExpenseRemarks").Visible = False
             dgvExpense.Columns("ServiceNumber").Visible = False
             dgvExpense.Columns("Type").Visible = False
+            dgvExpense.Columns("WorkWith").Visible = False
             dgvExpense.Columns("Total Amount").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
             dgvExpense.Columns("Location").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         Else
@@ -293,6 +294,7 @@
                 txtServiceNumber.Text = dgvExpense.Rows(e.RowIndex).Cells("ServiceNumber").Value
                 txtInstrument.Text = IIf(IsDBNull(dgvExpense.Rows(e.RowIndex).Cells("Instrument").Value), "", dgvExpense.Rows(e.RowIndex).Cells("Instrument").Value)
                 txtSerialNumber.Text = IIf(IsDBNull(dgvExpense.Rows(e.RowIndex).Cells("Serial Number").Value), "", dgvExpense.Rows(e.RowIndex).Cells("Serial Number").Value)
+                modLoadingData.WorkWith = dgvExpense.Rows(e.RowIndex).Cells("WorkWith").Value
             End If
         Catch ex As Exception
             MsgBox(ex.Message)

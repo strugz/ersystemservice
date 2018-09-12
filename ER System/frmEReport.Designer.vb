@@ -366,8 +366,8 @@ Partial Class frmEReport
         Me.TabPage2.Controls.Add(Me.dtpExpenseDate)
         Me.TabPage2.Controls.Add(Me.Label9)
         Me.TabPage2.Controls.Add(Me.CBPerdiem)
-        Me.TabPage2.Controls.Add(Me.btnExpenseSave)
         Me.TabPage2.Controls.Add(Me.btnExpenseUpdate)
+        Me.TabPage2.Controls.Add(Me.btnExpenseSave)
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
