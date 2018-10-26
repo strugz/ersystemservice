@@ -36,21 +36,6 @@ Public Class frmRpt
             'Me.TopMost = True
         End If
     End Sub
-
-    Private Sub cryptRptER_Load(sender As Object, e As EventArgs) Handles cryptRptER.Load
-        User = TripleDes.DecryptData(My.Computer.Registry.GetValue("HKEY_CURRENT_USER\Software\ER System\Connection", "UserName", ""))
-        password = TripleDes.DecryptData(My.Computer.Registry.GetValue("HKEY_CURRENT_USER\Software\ER System\Connection", "Password", ""))
-        server = TripleDes.DecryptData(My.Computer.Registry.GetValue("HKEY_CURRENT_USER\Software\ER System\Connection", "ServerName", ""))
-        database = TripleDes.DecryptData(My.Computer.Registry.GetValue("HKEY_CURRENT_USER\Software\ER System\Connection", "Database", ""))
-        rptER.Load(Application.StartupPath & "\ER Report.rpt")
-        rptER.SetDatabaseLogon(User, password)
-        'rptER.SetParameterValue("@StartDate", frmEReport.DtpReportFrom.Text)
-        'rptER.SetParameterValue("@EndDate", frmEReport.DtpReportTo.Text)
-        rptER.SetParameterValue("@UserID", MyUserID)
-        rptER.SetParameterValue("@reportID", reportID)
-        cryptRptER.ReportSource = rptER
-        cryptRptER.Refresh()
-    End Sub
     Public Sub export()
 
         User = TripleDes.DecryptData(My.Computer.Registry.GetValue("HKEY_CURRENT_USER\Software\ER System\Connection", "UserName", ""))
@@ -84,7 +69,7 @@ Public Class frmRpt
         End With
         ExportER.Export()
     End Sub
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnSendPrint.Click
 
         If modLoadingData.ReportIDExport = Nothing Then
             MsgBox("Select Report To Send")
@@ -117,4 +102,19 @@ Public Class frmRpt
         End With
         Return reportidexport
     End Function
+
+    Private Sub cryptRptER_Load(sender As Object, e As EventArgs) Handles cryptRptER.Load
+        User = TripleDes.DecryptData(My.Computer.Registry.GetValue("HKEY_CURRENT_USER\Software\ER System\Connection", "UserName", ""))
+        password = TripleDes.DecryptData(My.Computer.Registry.GetValue("HKEY_CURRENT_USER\Software\ER System\Connection", "Password", ""))
+        server = TripleDes.DecryptData(My.Computer.Registry.GetValue("HKEY_CURRENT_USER\Software\ER System\Connection", "ServerName", ""))
+        database = TripleDes.DecryptData(My.Computer.Registry.GetValue("HKEY_CURRENT_USER\Software\ER System\Connection", "Database", ""))
+        rptER.Load(Application.StartupPath & "\ER Report.rpt")
+        rptER.SetDatabaseLogon(User, password)
+        'rptER.SetParameterValue("@StartDate", frmEReport.DtpReportFrom.Text)
+        'rptER.SetParameterValue("@EndDate", frmEReport.DtpReportTo.Text)
+        rptER.SetParameterValue("@UserID", MyUserID)
+        rptER.SetParameterValue("@reportID", reportID)
+        cryptRptER.ReportSource = rptER
+        cryptRptER.Refresh()
+    End Sub
 End Class

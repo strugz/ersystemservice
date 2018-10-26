@@ -126,7 +126,7 @@
                 frmEReport.Location = New Point(200, 157)
                 frmEReport.Width = 1055
                 Me.btnPrintPreview.Enabled = True
-                frmRpt.Button1.Enabled = False
+                frmRpt.btnSendPrint.Enabled = False
                 frmRpt.cryptRptER.ShowNextPage()
                 frmRpt.cryptRptER.DisplayToolbar = True
                 frmRpt.cryptRptER.ShowPrintButton = False
@@ -145,7 +145,7 @@
                 Else
                     frmEReport.CbCashAdvanceReceive.Checked = False
                 End If
-                frmRpt.Button1.Enabled = True
+                frmRpt.btnSendPrint.Enabled = True
                 frmRpt.cryptRptER.ShowNextPage()
                 frmRpt.cryptRptER.DisplayToolbar = True
                 frmRpt.cryptRptER.ShowPrintButton = False
@@ -188,7 +188,7 @@
             frmEReport.TabControl1.SelectedTab = frmEReport.TabPage2
             frmRpt.cryptRptER.DisplayToolbar = True
             frmRpt.cryptRptER.ShowPrintButton = True
-            frmRpt.Button1.Enabled = True
+            frmRpt.btnSendPrint.Enabled = True
             frmRpt.cryptRptER.ShowNextPage()
             frmRpt.cryptRptER.DisplayToolbar = True
             frmRpt.cryptRptER.ShowPrintButton = False
@@ -232,7 +232,7 @@
                 Me.ToolTip1.SetToolTip(Me.btnFileReport, "File Report")
                 Me.ToolStripButton1.Enabled = False
                 Me.ToolStripButton2.Enabled = False
-                frmRpt.Button1.Enabled = False
+                frmRpt.btnSendPrint.Enabled = False
                 'frmRpt.cryptRptER.DisplayToolbar = True
                 'frmRpt.cryptRptER.Dock = DockStyle.Fill
                 frmRpt.cryptRptER.ShowPrintButton = False

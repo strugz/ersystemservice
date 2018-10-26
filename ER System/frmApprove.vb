@@ -105,7 +105,7 @@
                 '  Me.btnReject.Visible = False
                 Me.btnCancel.Location = New Point(331, 480)
                 Me.btnReportViewer.Location = New Point(442, 480)
-                frmRpt.cryptRptER.ShowPrintButton = False
+                'frmRpt.cryptRptER.ShowPrintButton = False
                 Me.dgvUser.Columns("Number of File").Visible = False
                 Me.dgvUser.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
             End If
@@ -136,9 +136,9 @@
             frmRpt.Show()
             Me.SendToBack()
             frmRpt.BringToFront()
-            frmRpt.cryptRptER.Dock = DockStyle.Fill
-            frmRpt.Button1.Visible = False
-            frmRpt.cryptRptER.DisplayToolbar = True
+            'frmRpt.cryptRptER.Dock = DockStyle.Fill
+            frmRpt.btnSendPrint.Visible = False
+            'frmRpt.cryptRptER.DisplayToolbar = True
             Me.TopMost = False
             frmRpt.TopMost = True
         End If

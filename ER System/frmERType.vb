@@ -6,13 +6,11 @@ Imports System.Net.Mail
 Imports System.Net.Mime
 Imports System.Threading
 Imports System.ComponentModel
-
 Public Class frmERType
     Dim subject As String
     Dim dtp As DateTime = Date.Now
     Public Const MyKey As String = "crimsonmonastery2003"
     Public TripleDes As New clsEncryption(MyKey)
-
     Private Sub frmERType_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.TopMost = False
         frmEReport.TopMost = True
@@ -26,9 +24,6 @@ Public Class frmERType
         frmLoading.TopMost = True
         btnSend.Text = "Sending . ."
         btnSend.Enabled = False
-        If modLoadingData.ReportIDExport <> "" Then
-            PrintSendingReport()
-        End If
     End Sub
 
     Public Sub RBUTTON()
@@ -57,11 +52,13 @@ Public Class frmERType
         message.Attachments.Add(attachment)
         Dim smtpClient As New SmtpClient("mail.marsmandrysdale.com")
         message.Bcc.Add(modLoadingData.EmailBCC)
+        smtpClient.EnableSsl = False
         smtpClient.UseDefaultCredentials = False
         Dim credentials As New NetworkCredential(TripleDes.DecryptData(modLoadingData.EmailAdd).ToString, TripleDes.DecryptData(modLoadingData.EmailPass).ToString)
         smtpClient.Credentials = credentials
         smtpClient.Send(message)
         InsertAttachment(LoginUsername + "|" + DateAndTime.Now.ToString("MM/dd/yyyy HH:mm") + "|" + frmRpt.strExportFile)
+
     End Sub
 
     Private Sub rbtERF_CheckedChanged(sender As Object, e As EventArgs) Handles rbtERF.CheckedChanged

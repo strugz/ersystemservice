@@ -39,7 +39,7 @@
                     frmApprove.btnApprove.Visible = False
                     frmApprove.btnCancel.Location = New Point(331, 480)
                     frmApprove.btnReportViewer.Location = New Point(442, 480)
-                    frmRpt.cryptRptER.ShowPrintButton = False
+                    'frmRpt.cryptRptER.ShowPrintButton = False
                     frmApprove.dgvUser.Columns("Number of File").Visible = False
                     frmApprove.dgvUser.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
                 End If
