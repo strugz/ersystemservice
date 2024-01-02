@@ -120,8 +120,4 @@
             End If
         End If
     End Sub
-
-    Private Sub txtHospitalClient_TextChanged(sender As Object, e As EventArgs) Handles txtHospitalClient.TextChanged
-
-    End Sub
 End Class
