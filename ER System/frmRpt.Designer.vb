@@ -36,7 +36,7 @@ Partial Class frmRpt
         Me.btnSendPrint.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSendPrint.Location = New System.Drawing.Point(0, 0)
         Me.btnSendPrint.Name = "btnSendPrint"
-        Me.btnSendPrint.Size = New System.Drawing.Size(733, 46)
+        Me.btnSendPrint.Size = New System.Drawing.Size(1280, 46)
         Me.btnSendPrint.TabIndex = 1
         Me.btnSendPrint.Text = "Send/Print"
         Me.btnSendPrint.UseVisualStyleBackColor = True
@@ -51,7 +51,7 @@ Partial Class frmRpt
         Me.cryptRptER.Dock = System.Windows.Forms.DockStyle.Fill
         Me.cryptRptER.Location = New System.Drawing.Point(0, 46)
         Me.cryptRptER.Name = "cryptRptER"
-        Me.cryptRptER.Size = New System.Drawing.Size(733, 504)
+        Me.cryptRptER.Size = New System.Drawing.Size(1280, 721)
         Me.cryptRptER.TabIndex = 2
         Me.cryptRptER.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
         '
@@ -59,15 +59,15 @@ Partial Class frmRpt
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(733, 550)
+        Me.ClientSize = New System.Drawing.Size(1280, 767)
         Me.Controls.Add(Me.cryptRptER)
         Me.Controls.Add(Me.btnSendPrint)
         Me.Name = "frmRpt"
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
     Friend WithEvents btnSendPrint As System.Windows.Forms.Button
-    Friend WithEvents cryptRptER As CrystalDecisions.Windows.Forms.CrystalReportViewer
+    Friend WithEvents cryptRptER As CrystalReportViewer
 End Class

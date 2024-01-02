@@ -1,4 +1,5 @@
-﻿Public Class frmEReport
+﻿Imports System.IO
+Public Class frmEReport
     Dim dtLoadReport As New DataTable
     Dim transactionID As String
     Public SDateReport As String
@@ -85,7 +86,6 @@
         dgvExpense.Columns(1).DefaultCellStyle.WrapMode = DataGridViewTriState.True
     End Sub
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
-        'clearData()
         CbCashAdvanceReceive.Checked = False
         btnUpdate.Visible = False
         BtnSave.Visible = True
@@ -133,8 +133,6 @@
                 frmMain.DgvReportDetails.BringToFront()
                 Me.Close()
             End If
-            'LoadingDataReport(UserID, "01/01/1990", "12/01/2200")
-            ' AutoSizegrid()
         End If
     End Sub
     Private Sub frmEReport_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
@@ -146,8 +144,6 @@
         modLoadingData.ReportIDExport = Nothing
         frmMain.btnFileReport.Enabled = False
         frmMain.btnFileReport.Text = "File Report"
-        'frmMain.TopMost = True
-        'Me.TopMost = False
         My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\ER System\Settings", "Additional", "1")
         frmMain.DgvReportDetails.Enabled = True
         frmMain.MenuStrip1.Enabled = True
@@ -155,16 +151,14 @@
 
     Private Sub frmEReport_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Escape Then
-            clearExpenseData()
+            clearExpenseData1()
             btnExpenseUpdate.Visible = False
             btnExpenseSave.Visible = True
         End If
     End Sub
     Private Sub frmEReport_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        LoadClient()
         If modLoadingData.LoginUserLevel = "Admin" Then
             btnUpdate.Enabled = False
-            'Me.TopMost = False
             txtPofExpense.Text = Description
             DtpReportFrom.Value = modLoadingData.sDate
             DtpReportTo.Value = modLoadingData.eDate
@@ -178,13 +172,10 @@
             frmMain.btnPrintPreview.Enabled = True
         Else
             If frmMain.PrintStatus = 0 And frmMain.FileStatus = "0" Then
-                '  TabControl1.TabPages.Remove(TabPage2)
                 btnUpdate.Enabled = False
                 txtPofExpense.Text = Description
                 DtpReportFrom.Value = modLoadingData.sDate
                 DtpReportTo.Value = modLoadingData.eDate
-                'DtpReportFrom.Text = SDateReport
-                'DtpReportTo.Text = EdateReport
                 txtStatus.SelectedIndex = 0
                 frmMain.btnFileReport.Enabled = True
                 modLoadingData.ExpenseCount = Nothing
@@ -195,11 +186,8 @@
             ElseIf frmMain.FileStatus = "1" And frmMain.PrintStatus = 1 Then
                 DtpReportFrom.Value = modLoadingData.sDate
                 DtpReportTo.Value = modLoadingData.eDate
-                ' TabControl1.TabPages.Remove(TabPage2)
                 frmMain.btnFileReport.Enabled = False
                 txtPofExpense.Text = Description
-                'DtpReportFrom.Text = SDateReport
-                'DtpReportTo.Text = EdateReport
                 txtStatus.SelectedIndex = 0
                 modLoadingData.ExpenseCount = Nothing
                 frmMain.btnFileReport.Text = "Already Filed"
@@ -238,23 +226,6 @@
         If TabControl1.SelectedIndex = 1 Then
             Me.Width = 1055
             LoadingExpenseReport(modLoadingData.ReportIDExport, modLoadingData.LoginuserID, SDateReport, EdateReport)
-            Button6.Visible = True
-            Button7.Visible = True
-            dgvExpense.Visible = True
-            AutoSizegrid()
-            dgvExpense.Columns("sort").Visible = False
-            dgvExpense.Columns("ID").Visible = False
-            dgvExpense.Columns("ExpensePerdiem").Visible = False
-            dgvExpense.Columns("ExpenseAmount").Visible = False
-            dgvExpense.Columns("ExpenseMultiplier").Visible = False
-            dgvExpense.Columns("ExpenseInvoice").Visible = False
-            dgvExpense.Columns("ExpenseStatus").Visible = False
-            dgvExpense.Columns("ExpenseRemarks").Visible = False
-            dgvExpense.Columns("ServiceNumber").Visible = False
-            dgvExpense.Columns("Type").Visible = False
-            dgvExpense.Columns("WorkWith").Visible = False
-            dgvExpense.Columns("Total Amount").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            dgvExpense.Columns("Location").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         Else
             dgvExpense.Visible = False
             Me.Width = 350
@@ -294,6 +265,7 @@
                 txtServiceNumber.Text = dgvExpense.Rows(e.RowIndex).Cells("ServiceNumber").Value
                 txtInstrument.Text = IIf(IsDBNull(dgvExpense.Rows(e.RowIndex).Cells("Instrument").Value), "", dgvExpense.Rows(e.RowIndex).Cells("Instrument").Value)
                 txtSerialNumber.Text = IIf(IsDBNull(dgvExpense.Rows(e.RowIndex).Cells("Serial Number").Value), "", dgvExpense.Rows(e.RowIndex).Cells("Serial Number").Value)
+                txtWorkWith.Text = dgvExpense.Rows(e.RowIndex).Cells("WorkWith").Value
                 modLoadingData.WorkWith = dgvExpense.Rows(e.RowIndex).Cells("WorkWith").Value
             End If
         Catch ex As Exception
@@ -324,59 +296,31 @@
         txtTotal.Text = Math.Round(Val(txtExpenseAmount.Text) * Val(txtMultiplier.Text))
     End Sub
     Private Sub btnExpenseSave_Click(sender As Object, e As EventArgs) Handles btnExpenseSave.Click
-        Dim str As String
-        str = LoadSearchClient(Trim(txtLocation.Text))
-        If txtParticulars.Text = Nothing Or txtExpenseAmount.Text = Nothing Then
-            MsgBox("Please fill in the Particulars/Expense Amount")
+        If txtParticulars.Text = Nothing Or txtExpenseAmount.Text = Nothing Or txtCategory.SelectedItem = "" Then
+            MsgBox("Please fill in the Particulars/Expense Amount/Category")
         ElseIf txtType.SelectedItem = Nothing Then
             MsgBox("Please Select Type")
         ElseIf txtCategory.SelectedItem = Nothing Then
             MsgBox("Please Select Category")
+        ElseIf txtWorkWith.Text = "" Then
+            MsgBox("Please fill the WorkWith")
         Else
-            If My.Computer.Registry.GetValue("HKEY_CURRENT_USER\Software\ER System\Settings", "Additional", "") = "0" Then
-                If str = "" Or str = 0 Then
-                    AddExpenseReport()
-                    AddClient(Trim(txtLocation.Text))
-                    MsgBox("Add Successfully")
-                    clearExpenseData()
-                    LoadingExpenseReport(modLoadingData.ReportIDExport, modLoadingData.LoginuserID, SDateReport, EdateReport)
-                    LoadClient()
-                Else
-                    AddExpenseReport()
-                    MsgBox("Add Successfully")
-                    clearExpenseData()
-                    LoadingExpenseReport(modLoadingData.ReportIDExport, modLoadingData.LoginuserID, SDateReport, EdateReport)
-                End If
-            Else
-                If str = "" Or str = 0 Then
-                    frmAdditionalInput.ShowDialog()
-                    frmAdditionalInput.TopMost = True
-                    AddExpenseReport()
-                    AddClient(Trim(txtLocation.Text))
-                    MsgBox("Add Successfully")
-                    clearExpenseData()
-                    LoadingExpenseReport(modLoadingData.ReportIDExport, modLoadingData.LoginuserID, SDateReport, EdateReport)
-                    LoadClient()
-                Else
-                    frmAdditionalInput.ShowDialog()
-                    frmAdditionalInput.TopMost = True
-                    AddExpenseReport()
-                    MsgBox("Add Successfully")
-                    clearExpenseData()
-                    LoadingExpenseReport(modLoadingData.ReportIDExport, modLoadingData.LoginuserID, SDateReport, EdateReport)
-                End If
-            End If
+            AddExpenseReport()
+            MsgBox("Add Successfully")
+            clearExpenseData()
+            LoadingExpenseReport(modLoadingData.ReportIDExport, modLoadingData.LoginuserID, SDateReport, EdateReport)
+            txtParticulars.Focus()
         End If
     End Sub
     Private Sub AddExpenseReport()
-        AddExpense(dtpExpenseDate.Text, IIf(CBPerdiem.Checked, "1", "0"), txtParticulars.Text, txtInvoice.Text, txtMultiplier.Text, txtType.Text, txtCategory.Text, txtExpenseAmount.Text, txtRemarks.Text, txtStatus.Text, txtTotal.Text, IIf(Trim(Trim(txtLocation.Text)) = "", "Allowance", Trim(Trim(Trim(txtLocation.Text)))), modLoadingData.LoginuserID, modLoadingData.ReportIDExport, IIf(txtServiceNumber.Text = "", "N/A", txtServiceNumber.Text), IIf(txtInstrument.Text = "", "N/A", txtInstrument.Text), IIf(txtSerialNumber.Text = "", "N/A", txtSerialNumber.Text))
+        AddExpense(dtpExpenseDate.Text, IIf(CBPerdiem.Checked, "1", "0"), txtParticulars.Text, txtInvoice.Text, txtMultiplier.Text, txtType.Text, txtCategory.Text, txtExpenseAmount.Text, txtRemarks.Text, txtStatus.Text, txtTotal.Text, IIf(Trim(Trim(txtLocation.Text)) = "", "Allowance", Trim(Trim(Trim(txtLocation.Text)))), modLoadingData.LoginuserID, modLoadingData.ReportIDExport, IIf(txtServiceNumber.Text = "", "N/A", txtServiceNumber.Text), IIf(txtInstrument.Text = "", "N/A", txtInstrument.Text), IIf(txtSerialNumber.Text = "", "N/A", txtSerialNumber.Text), txtWorkWith.Text)
     End Sub
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
-        clearExpenseData()
+        clearExpenseData1()
         btnExpenseUpdate.Visible = False
         btnExpenseSave.Visible = True
     End Sub
-    Private Sub clearExpenseData()
+    Private Sub clearExpenseData1()
         txtParticulars.Clear()
         txtType.SelectedItem = Nothing
         txtCategory.SelectedItem = Nothing
@@ -391,50 +335,35 @@
         txtServiceNumber.Clear()
         txtInstrument.Clear()
         txtSerialNumber.Clear()
+        txtWorkWith.Clear()
+        modLoadingData.WorkWith = ""
+        txtLocation.Clear()
+    End Sub
+    Private Sub clearExpenseData()
+        txtParticulars.Clear()
+        txtType.SelectedItem = Nothing
+        txtCategory.SelectedItem = Nothing
+        txtExpenseAmount.Clear()
+        txtMultiplier.Text = "1"
+        txtTotal.Text = ""
+        txtInvoice.Clear()
+        txtRemarks.Clear()
+        CBPerdiem.Checked = False
+        btnExpenseUpdate.Visible = False
+        btnExpenseSave.Visible = True
+        modLoadingData.WorkWith = ""
     End Sub
     Private Sub btnExpenseUpdate_Click(sender As Object, e As EventArgs) Handles btnExpenseUpdate.Click
-        Dim str As String
-        str = LoadSearchClient(Trim(txtLocation.Text))
-        If txtParticulars.Text = Nothing Or txtExpenseAmount.Text = Nothing Then
-            MsgBox("Check Inputs!")
+        If txtParticulars.Text = Nothing Or txtExpenseAmount.Text = Nothing Or txtCategory.SelectedItem = "" Then
+            MsgBox("Please fill in the Particulars/Expense Amount/Category")
         Else
-            If My.Computer.Registry.GetValue("HKEY_CURRENT_USER\Software\ER System\Settings", "Additional", "") = "0" Then
-                If str = "" Or str = 0 Then
-                    UpdateExpense(transactionID, dtpExpenseDate.Text, IIf(CBPerdiem.Checked, "1", "0"), txtParticulars.Text, txtInvoice.Text, txtMultiplier.Text, txtType.Text, txtCategory.Text, txtExpenseAmount.Text, txtRemarks.Text, txtStatus.Text, txtTotal.Text, IIf(Trim(Trim(txtLocation.Text)) = "", "Allowance", Trim(Trim(txtLocation.Text))), modLoadingData.LoginuserID, txtServiceNumber.Text, txtInstrument.Text, txtSerialNumber.Text)
-                    AddClient(Trim(txtLocation.Text))
-                    AddExpenseHisto(dtpExpenseDate.Text, IIf(CBPerdiem.Checked, "1", "0"), txtParticulars.Text, txtInvoice.Text, txtMultiplier.Text, txtType.Text, txtCategory.Text, txtExpenseAmount.Text, txtRemarks.Text, txtStatus.Text, txtTotal.Text, IIf(Trim(txtLocation.Text) = "", "Allowance", Trim(txtLocation.Text)), modLoadingData.LoginuserID, modLoadingData.ReportIDExport, transactionID, txtServiceNumber.Text, txtInstrument.Text, txtSerialNumber.Text)
-                    LoadingExpenseReport(modLoadingData.ReportIDExport, modLoadingData.LoginuserID, SDateReport, EdateReport)
-                    LoadClient()
-                    MsgBox("Update Successfully")
-                    clearExpenseData()
-                Else
-                    UpdateExpense(transactionID, dtpExpenseDate.Text, IIf(CBPerdiem.Checked, "1", "0"), txtParticulars.Text, txtInvoice.Text, txtMultiplier.Text, txtType.Text, txtCategory.Text, txtExpenseAmount.Text, txtRemarks.Text, txtStatus.Text, txtTotal.Text, IIf(Trim(txtLocation.Text) = "", "Allowance", Trim(txtLocation.Text)), modLoadingData.LoginuserID, txtServiceNumber.Text, txtInstrument.Text, txtSerialNumber.Text)
-                    AddExpenseHisto(dtpExpenseDate.Text, IIf(CBPerdiem.Checked, "1", "0"), txtParticulars.Text, txtInvoice.Text, txtMultiplier.Text, txtType.Text, txtCategory.Text, txtExpenseAmount.Text, txtRemarks.Text, txtStatus.Text, txtTotal.Text, IIf(Trim(txtLocation.Text) = "", "Allowance", Trim(txtLocation.Text)), modLoadingData.LoginuserID, modLoadingData.ReportIDExport, transactionID, txtServiceNumber.Text, txtInstrument.Text, txtSerialNumber.Text)
-                    LoadingExpenseReport(modLoadingData.ReportIDExport, modLoadingData.LoginuserID, SDateReport, EdateReport)
-                    MsgBox("Update Successfully")
-                    clearExpenseData()
-                End If
-            Else
-                If str = "" Or str = 0 Then
-                    frmAdditionalInput.ShowDialog()
-                    frmAdditionalInput.TopMost = True
-                    UpdateExpense(transactionID, dtpExpenseDate.Text, IIf(CBPerdiem.Checked, "1", "0"), txtParticulars.Text, txtInvoice.Text, txtMultiplier.Text, txtType.Text, txtCategory.Text, txtExpenseAmount.Text, txtRemarks.Text, txtStatus.Text, txtTotal.Text, IIf(Trim(txtLocation.Text) = "", "Allowance", Trim(txtLocation.Text)), modLoadingData.LoginuserID, txtServiceNumber.Text, txtInstrument.Text, txtSerialNumber.Text)
-                    AddClient(Trim(txtLocation.Text))
-                    AddExpenseHisto(dtpExpenseDate.Text, IIf(CBPerdiem.Checked, "1", "0"), txtParticulars.Text, txtInvoice.Text, txtMultiplier.Text, txtType.Text, txtCategory.Text, txtExpenseAmount.Text, txtRemarks.Text, txtStatus.Text, txtTotal.Text, IIf(Trim(txtLocation.Text) = "", "Allowance", Trim(txtLocation.Text)), modLoadingData.LoginuserID, modLoadingData.ReportIDExport, transactionID, txtServiceNumber.Text, txtInstrument.Text, txtSerialNumber.Text)
-                    LoadingExpenseReport(modLoadingData.ReportIDExport, modLoadingData.LoginuserID, SDateReport, EdateReport)
-                    LoadClient()
-                    MsgBox("Update Successfully")
-                    clearExpenseData()
-                Else
-                    frmAdditionalInput.ShowDialog()
-                    frmAdditionalInput.TopMost = True
-                    UpdateExpense(transactionID, dtpExpenseDate.Text, IIf(CBPerdiem.Checked, "1", "0"), txtParticulars.Text, txtInvoice.Text, txtMultiplier.Text, txtType.Text, txtCategory.Text, txtExpenseAmount.Text, txtRemarks.Text, txtStatus.Text, txtTotal.Text, IIf(Trim(txtLocation.Text) = "", "Allowance", Trim(txtLocation.Text)), modLoadingData.LoginuserID, txtServiceNumber.Text, txtInstrument.Text, txtSerialNumber.Text)
-                    AddExpenseHisto(dtpExpenseDate.Text, IIf(CBPerdiem.Checked, "1", "0"), txtParticulars.Text, txtInvoice.Text, txtMultiplier.Text, txtType.Text, txtCategory.Text, txtExpenseAmount.Text, txtRemarks.Text, txtStatus.Text, txtTotal.Text, IIf(Trim(txtLocation.Text) = "", "Allowance", Trim(txtLocation.Text)), modLoadingData.LoginuserID, modLoadingData.ReportIDExport, transactionID, txtServiceNumber.Text, txtInstrument.Text, txtSerialNumber.Text)
-                    LoadingExpenseReport(modLoadingData.ReportIDExport, modLoadingData.LoginuserID, SDateReport, EdateReport)
-                    MsgBox("Update Successfully")
-                    clearExpenseData()
-                End If
-            End If
+            UpdateExpense(transactionID, dtpExpenseDate.Text, IIf(CBPerdiem.Checked, "1", "0"), txtParticulars.Text, txtInvoice.Text, txtMultiplier.Text, txtType.Text, txtCategory.Text, txtExpenseAmount.Text, txtRemarks.Text, txtStatus.Text, txtTotal.Text, IIf(Trim(txtLocation.Text) = "", "Allowance", Trim(txtLocation.Text)), modLoadingData.LoginuserID, txtServiceNumber.Text, txtInstrument.Text, txtSerialNumber.Text, txtWorkWith.Text)
+            AddExpenseHisto(dtpExpenseDate.Text, IIf(CBPerdiem.Checked, "1", "0"), txtParticulars.Text, txtInvoice.Text, txtMultiplier.Text, txtType.Text, txtCategory.Text, txtExpenseAmount.Text, txtRemarks.Text, txtStatus.Text, txtTotal.Text, IIf(Trim(txtLocation.Text) = "", "Allowance", Trim(txtLocation.Text)), modLoadingData.LoginuserID, modLoadingData.ReportIDExport, transactionID, txtServiceNumber.Text, txtInstrument.Text, txtSerialNumber.Text)
+            LoadingExpenseReport(modLoadingData.ReportIDExport, modLoadingData.LoginuserID, SDateReport, EdateReport)
+            MsgBox("Update Successfully")
+            modReuse.SetTextFile(txtWorkWith.Text, txtLocation.Text, txtInstrument.Text, txtSerialNumber.Text, txtServiceNumber.Text)
+            clearExpenseData()
+            txtParticulars.Focus()
         End If
     End Sub
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
@@ -510,7 +439,7 @@
             txtServiceNumber.Text = "N/A"
         Else
             txtLocation.Enabled = True
-            txtLocation.SelectedItem = 0
+            txtLocation.Clear()
             txtInstrument.Enabled = True
             txtInstrument.Clear()
             txtSerialNumber.Enabled = True
@@ -540,7 +469,7 @@
         ElseIf txtParticulars.Text Like "*TRANS*" Then
             txtCategory.SelectedIndex = 0
         Else
-            txtCategory.SelectedIndex = 2
+            txtCategory.SelectedItem = Nothing
         End If
     End Sub
     Private Sub txtType_KeyUp(sender As Object, e As KeyEventArgs) Handles txtType.KeyUp
@@ -563,13 +492,59 @@
             txtRemarks.Focus()
         End If
     End Sub
-    Private Sub txtLocation_KeyUp1(sender As Object, e As KeyEventArgs) Handles txtLocation.KeyUp
+    Private Sub txtLocation_KeyUp1(sender As Object, e As KeyEventArgs)
         If e.KeyCode = Keys.Enter Then
             txtInstrument.Focus()
         End If
     End Sub
     Private Sub btnInstrumentHistory_Click(sender As Object, e As EventArgs) Handles btnInstrumentHistory.Click
-        History.Show()
-        History.BringToFront()
+        modLoadingData.DataToLoad = "Instrument"
+        frmHistory.txtName.Focus()
+        frmHistory.ShowDialog()
+    End Sub
+    Private Sub btnHospital_Click(sender As Object, e As EventArgs) Handles btnHospital.Click
+        modLoadingData.DataToLoad = "Hospital"
+        frmHistory.Text = "Hospital"
+        frmHistory.Label3.Visible = True
+        frmHistory.txtName.Focus()
+        frmHistory.ShowDialog()
+    End Sub
+
+    Private Sub btnSerialNumber_Click(sender As Object, e As EventArgs) Handles btnSerialNumber.Click
+        modLoadingData.DataToLoad = "Serial Number"
+        frmHistory.txtName.Focus()
+        frmHistory.ShowDialog()
+    End Sub
+
+    Private Sub btnServiceNo_Click(sender As Object, e As EventArgs) Handles btnServiceNo.Click
+        modLoadingData.DataToLoad = "Service Number"
+        frmHistory.txtName.Focus()
+        frmHistory.ShowDialog()
+    End Sub
+    Private Sub btnWorkWith_Click(sender As Object, e As EventArgs) Handles btnWorkWith.Click
+        LoadUserWorkWith()
+        frmAdditionalInput.dgvUser.Columns(1).ReadOnly = True
+        frmAdditionalInput.dgvUser.Columns(2).ReadOnly = True
+        frmAdditionalInput.dgvUser.Columns(0).Width = 30
+        frmAdditionalInput.Show()
+        frmAdditionalInput.BringToFront()
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs)
+        If File.Exists(Application.StartupPath + "/ER.txt") = False Then
+            MsgBox("No Data Available")
+        Else
+            Dim str() As String = {""}
+            str = modReuse.GetTextFile().Split("/")
+            If str.Length <> 0 Then
+                txtWorkWith.Text = str(0)
+                txtLocation.Text = str(1)
+                txtInstrument.Text = str(2)
+                txtSerialNumber.Text = str(3)
+                txtServiceNumber.Text = str(4)
+            Else
+                MsgBox("No Data Available")
+            End If
+        End If
     End Sub
 End Class

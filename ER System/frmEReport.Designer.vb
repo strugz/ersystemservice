@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmEReport
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmEReport
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmEReport))
         Me.BtnSave = New System.Windows.Forms.Button()
@@ -47,8 +47,14 @@ Partial Class frmEReport
         Me.DtpReportDate = New System.Windows.Forms.DateTimePicker()
         Me.btnClear = New System.Windows.Forms.Button()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.btnWorkWith = New System.Windows.Forms.Button()
+        Me.txtWorkWith = New System.Windows.Forms.TextBox()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.txtLocation = New System.Windows.Forms.TextBox()
+        Me.btnHospital = New System.Windows.Forms.Button()
+        Me.btnServiceNo = New System.Windows.Forms.Button()
+        Me.btnSerialNumber = New System.Windows.Forms.Button()
         Me.btnInstrumentHistory = New System.Windows.Forms.Button()
-        Me.txtLocation = New System.Windows.Forms.ComboBox()
         Me.txtSerialNumber = New System.Windows.Forms.TextBox()
         Me.Label22 = New System.Windows.Forms.Label()
         Me.txtInstrument = New System.Windows.Forms.TextBox()
@@ -78,8 +84,8 @@ Partial Class frmEReport
         Me.dtpExpenseDate = New System.Windows.Forms.DateTimePicker()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.CBPerdiem = New System.Windows.Forms.CheckBox()
-        Me.btnExpenseUpdate = New System.Windows.Forms.Button()
         Me.btnExpenseSave = New System.Windows.Forms.Button()
+        Me.btnExpenseUpdate = New System.Windows.Forms.Button()
         Me.dgvExpense = New System.Windows.Forms.DataGridView()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
@@ -116,7 +122,7 @@ Partial Class frmEReport
         Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(6, 136)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(18, 13)
+        Me.Label3.Size = New System.Drawing.Size(19, 13)
         Me.Label3.TabIndex = 5
         Me.Label3.Text = "To"
         '
@@ -186,7 +192,7 @@ Partial Class frmEReport
         Me.TabControl1.Location = New System.Drawing.Point(-3, 0)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(339, 509)
+        Me.TabControl1.Size = New System.Drawing.Size(339, 523)
         Me.TabControl1.TabIndex = 23
         '
         'TabPage1
@@ -206,7 +212,7 @@ Partial Class frmEReport
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(331, 483)
+        Me.TabPage1.Size = New System.Drawing.Size(331, 497)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Report Entry"
         '
@@ -335,8 +341,14 @@ Partial Class frmEReport
         'TabPage2
         '
         Me.TabPage2.BackColor = System.Drawing.SystemColors.Control
-        Me.TabPage2.Controls.Add(Me.btnInstrumentHistory)
+        Me.TabPage2.Controls.Add(Me.btnWorkWith)
+        Me.TabPage2.Controls.Add(Me.txtWorkWith)
+        Me.TabPage2.Controls.Add(Me.Label23)
         Me.TabPage2.Controls.Add(Me.txtLocation)
+        Me.TabPage2.Controls.Add(Me.btnHospital)
+        Me.TabPage2.Controls.Add(Me.btnServiceNo)
+        Me.TabPage2.Controls.Add(Me.btnSerialNumber)
+        Me.TabPage2.Controls.Add(Me.btnInstrumentHistory)
         Me.TabPage2.Controls.Add(Me.txtSerialNumber)
         Me.TabPage2.Controls.Add(Me.Label22)
         Me.TabPage2.Controls.Add(Me.txtInstrument)
@@ -366,46 +378,100 @@ Partial Class frmEReport
         Me.TabPage2.Controls.Add(Me.dtpExpenseDate)
         Me.TabPage2.Controls.Add(Me.Label9)
         Me.TabPage2.Controls.Add(Me.CBPerdiem)
-        Me.TabPage2.Controls.Add(Me.btnExpenseUpdate)
         Me.TabPage2.Controls.Add(Me.btnExpenseSave)
+        Me.TabPage2.Controls.Add(Me.btnExpenseUpdate)
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(331, 483)
+        Me.TabPage2.Size = New System.Drawing.Size(331, 497)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Expense Report"
         '
-        'btnInstrumentHistory
+        'btnWorkWith
         '
-        Me.btnInstrumentHistory.Location = New System.Drawing.Point(302, 96)
-        Me.btnInstrumentHistory.Name = "btnInstrumentHistory"
-        Me.btnInstrumentHistory.Size = New System.Drawing.Size(24, 78)
-        Me.btnInstrumentHistory.TabIndex = 58
-        Me.btnInstrumentHistory.Text = "..."
-        Me.btnInstrumentHistory.UseVisualStyleBackColor = True
+        Me.btnWorkWith.Location = New System.Drawing.Point(301, 24)
+        Me.btnWorkWith.Name = "btnWorkWith"
+        Me.btnWorkWith.Size = New System.Drawing.Size(24, 22)
+        Me.btnWorkWith.TabIndex = 69
+        Me.btnWorkWith.Text = "..."
+        Me.btnWorkWith.UseVisualStyleBackColor = True
+        '
+        'txtWorkWith
+        '
+        Me.txtWorkWith.Enabled = False
+        Me.txtWorkWith.Location = New System.Drawing.Point(99, 24)
+        Me.txtWorkWith.Name = "txtWorkWith"
+        Me.txtWorkWith.Size = New System.Drawing.Size(198, 22)
+        Me.txtWorkWith.TabIndex = 68
+        '
+        'Label23
+        '
+        Me.Label23.AutoSize = True
+        Me.Label23.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label23.Location = New System.Drawing.Point(11, 29)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(60, 13)
+        Me.Label23.TabIndex = 67
+        Me.Label23.Text = "WorkWith"
         '
         'txtLocation
         '
-        Me.txtLocation.FormattingEnabled = True
-        Me.txtLocation.Location = New System.Drawing.Point(98, 69)
+        Me.txtLocation.Enabled = False
+        Me.txtLocation.Location = New System.Drawing.Point(98, 80)
         Me.txtLocation.Name = "txtLocation"
-        Me.txtLocation.Size = New System.Drawing.Size(200, 21)
-        Me.txtLocation.TabIndex = 1
+        Me.txtLocation.Size = New System.Drawing.Size(199, 22)
+        Me.txtLocation.TabIndex = 66
+        '
+        'btnHospital
+        '
+        Me.btnHospital.Location = New System.Drawing.Point(301, 80)
+        Me.btnHospital.Name = "btnHospital"
+        Me.btnHospital.Size = New System.Drawing.Size(24, 22)
+        Me.btnHospital.TabIndex = 65
+        Me.btnHospital.Text = "..."
+        Me.btnHospital.UseVisualStyleBackColor = True
+        '
+        'btnServiceNo
+        '
+        Me.btnServiceNo.Location = New System.Drawing.Point(301, 163)
+        Me.btnServiceNo.Name = "btnServiceNo"
+        Me.btnServiceNo.Size = New System.Drawing.Size(24, 22)
+        Me.btnServiceNo.TabIndex = 60
+        Me.btnServiceNo.Text = "..."
+        Me.btnServiceNo.UseVisualStyleBackColor = True
+        '
+        'btnSerialNumber
+        '
+        Me.btnSerialNumber.Location = New System.Drawing.Point(301, 135)
+        Me.btnSerialNumber.Name = "btnSerialNumber"
+        Me.btnSerialNumber.Size = New System.Drawing.Size(24, 22)
+        Me.btnSerialNumber.TabIndex = 59
+        Me.btnSerialNumber.Text = "..."
+        Me.btnSerialNumber.UseVisualStyleBackColor = True
+        '
+        'btnInstrumentHistory
+        '
+        Me.btnInstrumentHistory.Location = New System.Drawing.Point(301, 107)
+        Me.btnInstrumentHistory.Name = "btnInstrumentHistory"
+        Me.btnInstrumentHistory.Size = New System.Drawing.Size(24, 22)
+        Me.btnInstrumentHistory.TabIndex = 58
+        Me.btnInstrumentHistory.Text = "..."
+        Me.btnInstrumentHistory.UseVisualStyleBackColor = True
         '
         'txtSerialNumber
         '
         Me.txtSerialNumber.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtSerialNumber.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSerialNumber.Location = New System.Drawing.Point(98, 124)
+        Me.txtSerialNumber.Location = New System.Drawing.Point(98, 135)
         Me.txtSerialNumber.Name = "txtSerialNumber"
-        Me.txtSerialNumber.Size = New System.Drawing.Size(200, 22)
+        Me.txtSerialNumber.Size = New System.Drawing.Size(199, 22)
         Me.txtSerialNumber.TabIndex = 3
         '
         'Label22
         '
         Me.Label22.AutoSize = True
         Me.Label22.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label22.Location = New System.Drawing.Point(11, 127)
+        Me.Label22.Location = New System.Drawing.Point(11, 138)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(79, 13)
         Me.Label22.TabIndex = 57
@@ -415,16 +481,16 @@ Partial Class frmEReport
         '
         Me.txtInstrument.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtInstrument.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtInstrument.Location = New System.Drawing.Point(98, 96)
+        Me.txtInstrument.Location = New System.Drawing.Point(98, 107)
         Me.txtInstrument.Name = "txtInstrument"
-        Me.txtInstrument.Size = New System.Drawing.Size(200, 22)
+        Me.txtInstrument.Size = New System.Drawing.Size(199, 22)
         Me.txtInstrument.TabIndex = 2
         '
         'Label21
         '
         Me.Label21.AutoSize = True
         Me.Label21.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label21.Location = New System.Drawing.Point(11, 99)
+        Me.Label21.Location = New System.Drawing.Point(11, 110)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(63, 13)
         Me.Label21.TabIndex = 55
@@ -434,16 +500,16 @@ Partial Class frmEReport
         '
         Me.txtServiceNumber.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtServiceNumber.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtServiceNumber.Location = New System.Drawing.Point(98, 152)
+        Me.txtServiceNumber.Location = New System.Drawing.Point(98, 163)
         Me.txtServiceNumber.Name = "txtServiceNumber"
-        Me.txtServiceNumber.Size = New System.Drawing.Size(200, 22)
+        Me.txtServiceNumber.Size = New System.Drawing.Size(199, 22)
         Me.txtServiceNumber.TabIndex = 4
         '
         'Label20
         '
         Me.Label20.AutoSize = True
         Me.Label20.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label20.Location = New System.Drawing.Point(11, 155)
+        Me.Label20.Location = New System.Drawing.Point(11, 166)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(63, 13)
         Me.Label20.TabIndex = 53
@@ -452,19 +518,19 @@ Partial Class frmEReport
         'btnCancel
         '
         Me.btnCancel.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancel.Location = New System.Drawing.Point(152, 453)
+        Me.btnCancel.Location = New System.Drawing.Point(152, 465)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(70, 24)
         Me.btnCancel.TabIndex = 51
         Me.btnCancel.TabStop = False
-        Me.btnCancel.Text = "Cancel"
+        Me.btnCancel.Text = "Clear"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
         'Label19
         '
         Me.Label19.AutoSize = True
         Me.Label19.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label19.Location = New System.Drawing.Point(11, 376)
+        Me.Label19.Location = New System.Drawing.Point(11, 387)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(50, 13)
         Me.Label19.TabIndex = 48
@@ -473,7 +539,7 @@ Partial Class frmEReport
         'txtRemarks
         '
         Me.txtRemarks.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtRemarks.Location = New System.Drawing.Point(98, 373)
+        Me.txtRemarks.Location = New System.Drawing.Point(98, 384)
         Me.txtRemarks.Name = "txtRemarks"
         Me.txtRemarks.Size = New System.Drawing.Size(200, 75)
         Me.txtRemarks.TabIndex = 13
@@ -484,9 +550,9 @@ Partial Class frmEReport
         Me.txtStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.txtStatus.FormattingEnabled = True
         Me.txtStatus.Items.AddRange(New Object() {"True", "False"})
-        Me.txtStatus.Location = New System.Drawing.Point(98, 346)
+        Me.txtStatus.Location = New System.Drawing.Point(98, 357)
         Me.txtStatus.Name = "txtStatus"
-        Me.txtStatus.Size = New System.Drawing.Size(200, 21)
+        Me.txtStatus.Size = New System.Drawing.Size(199, 21)
         Me.txtStatus.TabIndex = 12
         Me.txtStatus.TabStop = False
         '
@@ -494,7 +560,7 @@ Partial Class frmEReport
         '
         Me.Label18.AutoSize = True
         Me.Label18.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label18.Location = New System.Drawing.Point(11, 349)
+        Me.Label18.Location = New System.Drawing.Point(11, 360)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(39, 13)
         Me.Label18.TabIndex = 45
@@ -503,16 +569,16 @@ Partial Class frmEReport
         'txtInvoice
         '
         Me.txtInvoice.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtInvoice.Location = New System.Drawing.Point(98, 318)
+        Me.txtInvoice.Location = New System.Drawing.Point(98, 329)
         Me.txtInvoice.Name = "txtInvoice"
-        Me.txtInvoice.Size = New System.Drawing.Size(200, 22)
+        Me.txtInvoice.Size = New System.Drawing.Size(199, 22)
         Me.txtInvoice.TabIndex = 11
         '
         'Label17
         '
         Me.Label17.AutoSize = True
         Me.Label17.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.Location = New System.Drawing.Point(11, 321)
+        Me.Label17.Location = New System.Drawing.Point(11, 332)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(64, 13)
         Me.Label17.TabIndex = 43
@@ -521,9 +587,9 @@ Partial Class frmEReport
         'txtMultiplier
         '
         Me.txtMultiplier.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtMultiplier.Location = New System.Drawing.Point(228, 262)
+        Me.txtMultiplier.Location = New System.Drawing.Point(228, 273)
         Me.txtMultiplier.Name = "txtMultiplier"
-        Me.txtMultiplier.Size = New System.Drawing.Size(70, 22)
+        Me.txtMultiplier.Size = New System.Drawing.Size(69, 22)
         Me.txtMultiplier.TabIndex = 9
         Me.txtMultiplier.Text = "1"
         '
@@ -531,7 +597,7 @@ Partial Class frmEReport
         '
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label16.Location = New System.Drawing.Point(169, 265)
+        Me.Label16.Location = New System.Drawing.Point(169, 276)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(57, 13)
         Me.Label16.TabIndex = 41
@@ -541,15 +607,15 @@ Partial Class frmEReport
         '
         Me.txtTotal.Enabled = False
         Me.txtTotal.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtTotal.Location = New System.Drawing.Point(98, 290)
+        Me.txtTotal.Location = New System.Drawing.Point(98, 301)
         Me.txtTotal.Name = "txtTotal"
-        Me.txtTotal.Size = New System.Drawing.Size(200, 22)
+        Me.txtTotal.Size = New System.Drawing.Size(199, 22)
         Me.txtTotal.TabIndex = 9
         '
         'txtExpenseAmount
         '
         Me.txtExpenseAmount.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtExpenseAmount.Location = New System.Drawing.Point(98, 262)
+        Me.txtExpenseAmount.Location = New System.Drawing.Point(98, 273)
         Me.txtExpenseAmount.Name = "txtExpenseAmount"
         Me.txtExpenseAmount.Size = New System.Drawing.Size(70, 22)
         Me.txtExpenseAmount.TabIndex = 8
@@ -558,9 +624,9 @@ Partial Class frmEReport
         '
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(11, 293)
+        Me.Label14.Location = New System.Drawing.Point(11, 304)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(31, 13)
+        Me.Label14.Size = New System.Drawing.Size(32, 13)
         Me.Label14.TabIndex = 38
         Me.Label14.Text = "Total"
         '
@@ -568,7 +634,7 @@ Partial Class frmEReport
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(11, 265)
+        Me.Label15.Location = New System.Drawing.Point(11, 276)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(48, 13)
         Me.Label15.TabIndex = 37
@@ -579,10 +645,10 @@ Partial Class frmEReport
         Me.txtCategory.BackColor = System.Drawing.SystemColors.InactiveCaption
         Me.txtCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.txtCategory.FormattingEnabled = True
-        Me.txtCategory.Items.AddRange(New Object() {"Transportation", "Meals", "Others"})
-        Me.txtCategory.Location = New System.Drawing.Point(98, 235)
+        Me.txtCategory.Items.AddRange(New Object() {"Transportation", "Meals", "Toll", "Parking", "Others"})
+        Me.txtCategory.Location = New System.Drawing.Point(98, 246)
         Me.txtCategory.Name = "txtCategory"
-        Me.txtCategory.Size = New System.Drawing.Size(200, 21)
+        Me.txtCategory.Size = New System.Drawing.Size(199, 21)
         Me.txtCategory.TabIndex = 7
         '
         'txtType
@@ -590,17 +656,17 @@ Partial Class frmEReport
         Me.txtType.BackColor = System.Drawing.SystemColors.InactiveCaption
         Me.txtType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.txtType.FormattingEnabled = True
-        Me.txtType.Items.AddRange(New Object() {"Foreign", "Local"})
-        Me.txtType.Location = New System.Drawing.Point(98, 208)
+        Me.txtType.Items.AddRange(New Object() {"Local", "Foreign"})
+        Me.txtType.Location = New System.Drawing.Point(98, 219)
         Me.txtType.Name = "txtType"
-        Me.txtType.Size = New System.Drawing.Size(200, 21)
+        Me.txtType.Size = New System.Drawing.Size(199, 21)
         Me.txtType.TabIndex = 6
         '
         'Label12
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(11, 238)
+        Me.Label12.Location = New System.Drawing.Point(11, 249)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(53, 13)
         Me.Label12.TabIndex = 34
@@ -610,9 +676,9 @@ Partial Class frmEReport
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(11, 208)
+        Me.Label13.Location = New System.Drawing.Point(11, 219)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(29, 13)
+        Me.Label13.Size = New System.Drawing.Size(30, 13)
         Me.Label13.TabIndex = 33
         Me.Label13.Text = "Type"
         '
@@ -620,16 +686,16 @@ Partial Class frmEReport
         '
         Me.txtParticulars.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtParticulars.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtParticulars.Location = New System.Drawing.Point(98, 180)
+        Me.txtParticulars.Location = New System.Drawing.Point(98, 191)
         Me.txtParticulars.Name = "txtParticulars"
-        Me.txtParticulars.Size = New System.Drawing.Size(200, 22)
+        Me.txtParticulars.Size = New System.Drawing.Size(199, 22)
         Me.txtParticulars.TabIndex = 5
         '
         'Label11
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(11, 183)
+        Me.Label11.Location = New System.Drawing.Point(11, 194)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(60, 13)
         Me.Label11.TabIndex = 30
@@ -639,7 +705,7 @@ Partial Class frmEReport
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(11, 72)
+        Me.Label10.Location = New System.Drawing.Point(11, 83)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(82, 13)
         Me.Label10.TabIndex = 29
@@ -649,16 +715,16 @@ Partial Class frmEReport
         '
         Me.dtpExpenseDate.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpExpenseDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpExpenseDate.Location = New System.Drawing.Point(98, 41)
+        Me.dtpExpenseDate.Location = New System.Drawing.Point(99, 52)
         Me.dtpExpenseDate.Name = "dtpExpenseDate"
-        Me.dtpExpenseDate.Size = New System.Drawing.Size(200, 22)
+        Me.dtpExpenseDate.Size = New System.Drawing.Size(198, 22)
         Me.dtpExpenseDate.TabIndex = 28
         Me.dtpExpenseDate.TabStop = False
         '
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(11, 48)
+        Me.Label9.Location = New System.Drawing.Point(11, 59)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(69, 13)
         Me.Label9.TabIndex = 27
@@ -668,7 +734,7 @@ Partial Class frmEReport
         '
         Me.CBPerdiem.AutoSize = True
         Me.CBPerdiem.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CBPerdiem.Location = New System.Drawing.Point(14, 12)
+        Me.CBPerdiem.Location = New System.Drawing.Point(14, 6)
         Me.CBPerdiem.Name = "CBPerdiem"
         Me.CBPerdiem.Size = New System.Drawing.Size(79, 17)
         Me.CBPerdiem.TabIndex = 26
@@ -676,25 +742,25 @@ Partial Class frmEReport
         Me.CBPerdiem.Text = "Allowance"
         Me.CBPerdiem.UseVisualStyleBackColor = True
         '
+        'btnExpenseSave
+        '
+        Me.btnExpenseSave.Location = New System.Drawing.Point(228, 465)
+        Me.btnExpenseSave.Name = "btnExpenseSave"
+        Me.btnExpenseSave.Size = New System.Drawing.Size(70, 24)
+        Me.btnExpenseSave.TabIndex = 14
+        Me.btnExpenseSave.Text = "Save"
+        Me.btnExpenseSave.UseVisualStyleBackColor = True
+        '
         'btnExpenseUpdate
         '
         Me.btnExpenseUpdate.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnExpenseUpdate.Location = New System.Drawing.Point(228, 453)
+        Me.btnExpenseUpdate.Location = New System.Drawing.Point(228, 465)
         Me.btnExpenseUpdate.Name = "btnExpenseUpdate"
         Me.btnExpenseUpdate.Size = New System.Drawing.Size(70, 24)
         Me.btnExpenseUpdate.TabIndex = 9
         Me.btnExpenseUpdate.Text = "Update"
         Me.btnExpenseUpdate.UseVisualStyleBackColor = True
         Me.btnExpenseUpdate.Visible = False
-        '
-        'btnExpenseSave
-        '
-        Me.btnExpenseSave.Location = New System.Drawing.Point(228, 453)
-        Me.btnExpenseSave.Name = "btnExpenseSave"
-        Me.btnExpenseSave.Size = New System.Drawing.Size(70, 24)
-        Me.btnExpenseSave.TabIndex = 14
-        Me.btnExpenseSave.Text = "Save"
-        Me.btnExpenseSave.UseVisualStyleBackColor = True
         '
         'dgvExpense
         '
@@ -705,13 +771,13 @@ Partial Class frmEReport
         Me.dgvExpense.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvExpense.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvExpense.Location = New System.Drawing.Point(334, 0)
+        Me.dgvExpense.Location = New System.Drawing.Point(337, 0)
         Me.dgvExpense.Name = "dgvExpense"
         Me.dgvExpense.ReadOnly = True
         Me.dgvExpense.RowHeadersVisible = False
         Me.dgvExpense.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         Me.dgvExpense.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvExpense.Size = New System.Drawing.Size(666, 506)
+        Me.dgvExpense.Size = New System.Drawing.Size(666, 523)
         Me.dgvExpense.TabIndex = 24
         Me.dgvExpense.TabStop = False
         Me.dgvExpense.Visible = False
@@ -720,7 +786,7 @@ Partial Class frmEReport
         '
         Me.Button7.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Button7.Image = CType(resources.GetObject("Button7.Image"), System.Drawing.Image)
-        Me.Button7.Location = New System.Drawing.Point(1003, 236)
+        Me.Button7.Location = New System.Drawing.Point(1006, 244)
         Me.Button7.Name = "Button7"
         Me.Button7.Size = New System.Drawing.Size(34, 54)
         Me.Button7.TabIndex = 64
@@ -731,7 +797,7 @@ Partial Class frmEReport
         '
         Me.Button6.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Button6.Image = CType(resources.GetObject("Button6.Image"), System.Drawing.Image)
-        Me.Button6.Location = New System.Drawing.Point(1003, 179)
+        Me.Button6.Location = New System.Drawing.Point(1006, 187)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(34, 54)
         Me.Button6.TabIndex = 63
@@ -745,11 +811,11 @@ Partial Class frmEReport
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(1039, 506)
+        Me.ClientSize = New System.Drawing.Size(1042, 523)
+        Me.Controls.Add(Me.TabControl1)
+        Me.Controls.Add(Me.dgvExpense)
         Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.Button6)
-        Me.Controls.Add(Me.dgvExpense)
-        Me.Controls.Add(Me.TabControl1)
         Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.KeyPreview = True
@@ -800,7 +866,6 @@ Partial Class frmEReport
     Friend WithEvents btnClear As System.Windows.Forms.Button
     Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
     Friend WithEvents btnInstrumentHistory As System.Windows.Forms.Button
-    Friend WithEvents txtLocation As System.Windows.Forms.ComboBox
     Friend WithEvents txtSerialNumber As System.Windows.Forms.TextBox
     Friend WithEvents Label22 As System.Windows.Forms.Label
     Friend WithEvents txtInstrument As System.Windows.Forms.TextBox
@@ -832,4 +897,11 @@ Partial Class frmEReport
     Friend WithEvents CBPerdiem As System.Windows.Forms.CheckBox
     Friend WithEvents btnExpenseSave As System.Windows.Forms.Button
     Friend WithEvents btnExpenseUpdate As System.Windows.Forms.Button
+    Friend WithEvents btnServiceNo As Button
+    Friend WithEvents btnSerialNumber As Button
+    Friend WithEvents btnHospital As Button
+    Friend WithEvents txtLocation As TextBox
+    Friend WithEvents txtWorkWith As TextBox
+    Friend WithEvents Label23 As Label
+    Friend WithEvents btnWorkWith As Button
 End Class

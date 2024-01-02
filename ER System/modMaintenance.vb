@@ -14,7 +14,6 @@ Module modMaintenance
     Dim sqlcmdUpdateEmailSetup As New SqlCommand
     Public Const MyKey As String = "crimsonmonastery2003"
     Public TripleDes As New clsEncryption(MyKey)
-    Public WorkWith As String = ""
     Public Sub AddReport(ByVal dateFrom As String, ByVal dateto As String,
                          ByVal Description As String, ByVal CashAdvance As String,
                          ByVal cashDate As String, ByVal cashrefdoc As String,
@@ -74,22 +73,22 @@ Module modMaintenance
                           ByVal remarks As String, ByVal status As String,
                           ByVal totalamount As String, ByVal location As String,
                           ByVal userid As String, ByVal reportID As String, ByVal ServiceNumber As String,
-                          ByVal Instrument As String, ByVal SerialNumber As String)
+                          ByVal Instrument As String, ByVal SerialNumber As String, ByVal WorkWith As String)
         Dim sqlAddExpense As New SqlCommand
         Try
             With sqlAddExpense
                 .Connection = SQLConnection
                 If WorkWith = Nothing Then
-                    .CommandText = "EXEC [sp2_AddExpense] '" & transdate & "','" & perdiem & _
-                        "','" & particulars & "','" & invoice & "','" & multiplier & "','" & type & _
-                        "','" & category & "','" & amount & "','" & remarks & "','" & status & _
-                        "','" & totalamount & "','" & location & "','" & userid & "','" & reportID & "','" & "NONE" & "','" & ServiceNumber & _
+                    .CommandText = "EXEC [sp2_AddExpense] '" & transdate & "','" & perdiem &
+                        "','" & particulars & "','" & invoice & "','" & multiplier & "','" & type &
+                        "','" & category & "','" & amount & "','" & remarks & "','" & status &
+                        "','" & totalamount & "','" & location & "','" & userid & "','" & reportID & "','" & "NONE" & "','" & ServiceNumber &
                         "',,'" & Instrument & "','" & SerialNumber & "'"
                 Else
-                    .CommandText = "EXEC [sp2_AddExpense] '" & transdate & "','" & perdiem & _
-                       "','" & particulars & "','" & invoice & "','" & multiplier & "','" & type & _
-                       "','" & category & "','" & amount & "','" & remarks & "','" & status & _
-                       "','" & totalamount & "','" & location & "','" & userid & "','" & reportID & "','" & WorkWith & "','" & ServiceNumber & _
+                    .CommandText = "EXEC [sp2_AddExpense] '" & transdate & "','" & perdiem &
+                       "','" & particulars & "','" & invoice & "','" & multiplier & "','" & type &
+                       "','" & category & "','" & amount & "','" & remarks & "','" & status &
+                       "','" & totalamount & "','" & location & "','" & userid & "','" & reportID & "','" & WorkWith & "','" & ServiceNumber &
                        "','" & Instrument & "','" & SerialNumber & "'"
                 End If
                 .CommandType = CommandType.Text
@@ -138,22 +137,22 @@ Module modMaintenance
                            ByVal amount As String, ByVal remarks As String,
                            ByVal status As String, ByVal totalamount As String,
                            ByVal location As String, ByVal userid As String, ByVal ServiceNumber As String,
-                           ByVal Instrument As String, ByVal SerialNumber As String)
+                           ByVal Instrument As String, ByVal SerialNumber As String, ByVal WorkWith As String)
         Dim sqlUpdateExpense As New SqlCommand
         Try
             With sqlUpdateExpense
                 .Connection = SQLConnection
                 If WorkWith = Nothing Then
-                    .CommandText = "EXEC [sp2_updateExpense] '" & transID & "','" & transdate & _
-            "','" & perdiem & "','" & particulars & "','" & invoice & "','" & multiplier & _
-            "','" & type & "','" & category & "','" & amount & "','" & remarks & "','" & status & _
-            "','" & totalamount & "','" & location & "','" & userid & "','" & "NONE" & "','" & ServiceNumber & _
+                    .CommandText = "EXEC [sp2_updateExpense] '" & transID & "','" & transdate &
+            "','" & perdiem & "','" & particulars & "','" & invoice & "','" & multiplier &
+            "','" & type & "','" & category & "','" & amount & "','" & remarks & "','" & status &
+            "','" & totalamount & "','" & location & "','" & userid & "','" & "NONE" & "','" & ServiceNumber &
             "','" & Instrument & "','" & SerialNumber & "'"
                 Else
-                    .CommandText = "EXEC [sp2_updateExpense] '" & transID & "','" & transdate & _
-                "','" & perdiem & "','" & particulars & "','" & invoice & "','" & multiplier & _
-                "','" & type & "','" & category & "','" & amount & "','" & remarks & "','" & status & _
-                "','" & totalamount & "','" & location & "','" & userid & "','" & WorkWith & "','" & ServiceNumber & _
+                    .CommandText = "EXEC [sp2_updateExpense] '" & transID & "','" & transdate &
+                "','" & perdiem & "','" & particulars & "','" & invoice & "','" & multiplier &
+                "','" & type & "','" & category & "','" & amount & "','" & remarks & "','" & status &
+                "','" & totalamount & "','" & location & "','" & userid & "','" & WorkWith & "','" & ServiceNumber &
                 "','" & Instrument & "','" & SerialNumber & "'"
                 End If
 

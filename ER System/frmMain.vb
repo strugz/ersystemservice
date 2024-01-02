@@ -145,12 +145,12 @@
                 Else
                     frmEReport.CbCashAdvanceReceive.Checked = False
                 End If
-                frmRpt.btnSendPrint.Enabled = True
                 frmRpt.cryptRptER.ShowNextPage()
                 frmRpt.cryptRptER.DisplayToolbar = True
                 frmRpt.cryptRptER.ShowPrintButton = False
                 frmRpt.cryptRptER.ShowCopyButton = False
                 frmRpt.cryptRptER.ShowExportButton = False
+                frmRpt.btnSendPrint.Enabled = True
             Else
                 btnReportData.Enabled = False
                 frmEReport.btnUpdate.Visible = True
@@ -188,12 +188,12 @@
             frmEReport.TabControl1.SelectedTab = frmEReport.TabPage2
             frmRpt.cryptRptER.DisplayToolbar = True
             frmRpt.cryptRptER.ShowPrintButton = True
-            frmRpt.btnSendPrint.Enabled = True
             frmRpt.cryptRptER.ShowNextPage()
             frmRpt.cryptRptER.DisplayToolbar = True
             frmRpt.cryptRptER.ShowPrintButton = False
             frmRpt.cryptRptER.ShowCopyButton = False
             frmRpt.cryptRptER.ShowExportButton = False
+            frmRpt.btnSendPrint.Enabled = True
         Else
             If Me.PrintStatus = 0 And Me.FileStatus = "0" Then
                 frmEReport.btnUpdate.Enabled = False
@@ -360,7 +360,6 @@
             frmSignature.Close()
             frmUserRegistration.Close()
         ElseIf (e.KeyValue = Keys.Escape) = True Then
-            'DgvReportDetails.SendToBack()
             btnPrintPreview.Enabled = False
             btnFileReport.Enabled = False
             ToolStripButton1.Enabled = True
@@ -397,6 +396,9 @@
                 frmEReport.TopMost = False
                 MsgBox("No Expense Data to Load", TopMost = True)
             Else
+                If ReportStatus = "For Approval" Then
+                    frmRpt.btnSendPrint.Enabled = True
+                End If
                 frmRpt.MyUserID = modLoadingData.LoginuserID
                 frmRpt.reportID = modLoadingData.ReportIDExport
                 frmRpt.Show()

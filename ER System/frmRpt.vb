@@ -17,8 +17,6 @@ Public Class frmRpt
     Public MyUserID As String
     Private Sub frmRpt_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
         frmEReport.BringToFront()
-        'frmMain.TopMost = False
-        'Me.TopMost = False
     End Sub
     Private Sub frmRpt_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If modLoadingData.LoginUserLevel = "Admin" Then
@@ -28,12 +26,9 @@ Public Class frmRpt
             cryptRptER.Anchor = AnchorStyles.Left
             CreateUserDSN()
             Me.cryptRptER.ShowNextPage()
-            'frmEReport.TopMost = False
-            'Me.TopMost = True
+            btnSendPrint.Enabled = True
         Else
             CreateUserDSN()
-            'frmEReport.TopMost = False
-            'Me.TopMost = True
         End If
     End Sub
     Public Sub export()

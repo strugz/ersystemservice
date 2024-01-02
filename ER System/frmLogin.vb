@@ -15,7 +15,7 @@ Public Class frmLogin
         If e.KeyCode = Keys.Escape Then Application.Exit()
     End Sub
     Private Sub frmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Diagnostics.Process.GetProcessesByName(Diagnostics.Process.GetCurrentProcess.ProcessName)
+        Process.GetProcessesByName(Process.GetCurrentProcess.ProcessName)
         Try
             DBConnection()
             If Not IsConnected Then
@@ -166,8 +166,5 @@ Public Class frmLogin
     End Sub
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
         Application.Exit()
-    End Sub
-    Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs)
-
     End Sub
 End Class

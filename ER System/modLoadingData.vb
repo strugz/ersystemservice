@@ -56,7 +56,9 @@ Module modLoadingData
     Public ExpenseSummaryDateFrom As String
     Public ExpenseSummaryDateTo As String
     Public ReportPrintStatus As String
-    Public WorkWith As String
+    Public WorkWith As String = ""
+    Public DataToLoad As String = ""
+
     Public Sub LoadDuplicateUser(ByVal username As String)
         Try
             With sqlcmdLoadDupUser
@@ -149,6 +151,23 @@ Module modLoadingData
                 .CommandType = CommandType.Text
                 dt.Load(.ExecuteReader)
                 frmEReport.dgvExpense.DataSource = dt
+                frmEReport.Button6.Visible = True
+                frmEReport.Button7.Visible = True
+                frmEReport.dgvExpense.Visible = True
+                frmEReport.AutoSizegrid()
+                frmEReport.dgvExpense.Columns("sort").Visible = False
+                frmEReport.dgvExpense.Columns("ID").Visible = False
+                frmEReport.dgvExpense.Columns("ExpensePerdiem").Visible = False
+                frmEReport.dgvExpense.Columns("ExpenseAmount").Visible = False
+                frmEReport.dgvExpense.Columns("ExpenseMultiplier").Visible = False
+                frmEReport.dgvExpense.Columns("ExpenseInvoice").Visible = False
+                frmEReport.dgvExpense.Columns("ExpenseStatus").Visible = False
+                frmEReport.dgvExpense.Columns("ExpenseRemarks").Visible = False
+                frmEReport.dgvExpense.Columns("ServiceNumber").Visible = False
+                frmEReport.dgvExpense.Columns("Type").Visible = False
+                frmEReport.dgvExpense.Columns("WorkWith").Visible = False
+                frmEReport.dgvExpense.Columns("Total Amount").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+                frmEReport.dgvExpense.Columns("Location").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
             End With
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -547,10 +566,21 @@ Module modLoadingData
             frmExpenseDetails.cbbClientName.DataSource = dtLoadClient
             frmExpenseDetails.cbbClientName.ValueMember = "ID"
             frmExpenseDetails.cbbClientName.DisplayMember = "clientName"
+        End With
+    End Sub
 
-            frmEReport.txtLocation.DataSource = dtLoadClient
-            frmEReport.txtLocation.ValueMember = "ID"
-            frmEReport.txtLocation.DisplayMember = "clientName"
+    Public Sub LoadClientToGrid(ByVal ClientCodeName As String)
+        Dim dtLoadClient As New DataTable
+        Dim sqlcmdLoadClient As New SqlCommand
+        With sqlcmdLoadClient
+            .Connection = SQLConnection
+            dtLoadClient.Reset()
+            .Parameters.Clear()
+            .CommandText = "sp2_LoadClientToGrid"
+            .Parameters.Add("@ClientCodeName", SqlDbType.VarChar).Value = ClientCodeName
+            .CommandType = CommandType.StoredProcedure
+            dtLoadClient.Load(.ExecuteReader)
+            frmHistory.dgvHistory.DataSource = dtLoadClient
         End With
     End Sub
     Public Function LoadSearchClient(ByVal ClientName As String)
@@ -564,27 +594,35 @@ Module modLoadingData
         End With
         LoadSearchClient = dtLoadSearchClient.Rows.Count.ToString
     End Function
-    Public Sub LoadHistory(ByVal Details As String)
+    Public Sub LoadHistory(ByVal Details As String, ByVal DataToLoad As String)
         Dim dtLoadHistory As New DataTable
         Dim sqlcmdLoadHistory As New SqlCommand
         With sqlcmdLoadHistory
             .Connection = SQLConnection
-            .CommandText =
-                    "select a.Instrument as 'Details',a.ExpenseLocation from tbExpenseDetails as a " & _
-                        "where a.Instrument <> '' and a.Instrument <> 'N/A' and a.Instrument like '%" & Details & "%'" & _
-                                "Union all " & _
-                    "select a.SerialNumber as 'Details' from tbExpenseDetails as a " & _
-                        "where a.SerialNumber <> '' and a.SerialNumber <> 'N/A' and a.SerialNumber like '%" & Details & "%'" & _
-                                "Union all " & _
-                    "select a.ServiceNumber as 'Details' from tbExpenseDetails as a " & _
-                        "where a.ServiceNumber <> '' and a.ServiceNumber <> 'N/A' and a.ServiceNumber Like '%" & Details & "%'"
-            .CommandType = CommandType.Text
+            .CommandText = "sp2_LoadClientData"
+            .Parameters.Add("@ClientInstrumentSerialService", SqlDbType.VarChar).Value = Details
+            .Parameters.Add("@ClientDataToLoad", SqlDbType.VarChar).Value = DataToLoad
+            .CommandType = CommandType.StoredProcedure
             dtLoadHistory.Load(.ExecuteReader)
-
-            History.DataGridView1.DataSource = dtLoadHistory
+            frmHistory.dgvHistory.DataSource = dtLoadHistory
 
         End With
     End Sub
 
+    Public Sub LoadUserWorkWith()
+        Dim dtLoadUserWorkWith As New DataTable
+        Dim sqlcmdLoadUserWorkWith As New SqlCommand
+        With sqlcmdLoadUserWorkWith
+            .Connection = SQLConnection
+            .CommandText = "sp2_LoadUserWorkWIth"
+            .CommandType = CommandType.StoredProcedure
+            dtLoadUserWorkWith.Load(.ExecuteReader)
+            frmAdditionalInput.dgvUser.DataSource = dtLoadUserWorkWith
+            frmAdditionalInput.dgvUser.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+            Dim chkbox As New DataGridViewCheckBoxColumn
+            chkbox.FlatStyle = FlatStyle.Standard
+            frmAdditionalInput.dgvUser.Columns.Insert(0, chkbox)
+        End With
+    End Sub
 
 End Module
